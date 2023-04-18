@@ -1,0 +1,17 @@
+repeat wait() until game:IsLoaded()
+
+wait(3)
+if game.ReplicatedStorage:FindFirstChild("StartDungeon") then
+
+    local player = game.Players.LocalPlayer.Character
+    local egg = game.Workspace.Easter_EVENT
+    
+    game.ReplicatedStorage.StartDungeon:FireServer()
+    wait(5.5)
+    for i,v in pairs(egg:GetChildren()) do
+        player.HumanoidRootPart.CFrame = CFrame.new(v.Position.X - 0.5,v.Position.Y + 6.5,v.Position.Z)
+        wait(.6)
+    end
+    wait(.2)
+    player.Humanoid:TakeDamage(10000)
+end
